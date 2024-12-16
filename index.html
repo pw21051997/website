@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>websiteeeeee</title>
+  </head>
+  <body>
+    <div class="heart">
+      <video id="video" muted>
+        <source src="hearts.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <script>
+        const video = document.getElementById("video");
+
+        video.addEventListener("click", () => {
+          video.play();
+        });
+
+        // Function to make the video spaz out
+        function discoEffect() {
+          const discoInterval = setInterval(() => {
+            const randomScale = Math.random() * 2; // Random scale between 0 and 2
+            const randomRotate = Math.random() * 360; // Random rotation between 0 and 360 degrees
+            const randomTranslateX = Math.random() * 200 - 100; // Random horizontal translation (-100 to 100)
+            const randomTranslateY = Math.random() * 200 - 100; // Random vertical translation (-100 to 100)
+            const randomHue = Math.random() * 360; // Random hue (0 to 360 degrees)
+            const randomBrightness = Math.random() * 2; // Random brightness (0 to 2)
+
+            // Apply random transformations and color filters
+            video.style.transform = `scale(${randomScale}) rotate(${randomRotate}deg) translate(${randomTranslateX}px, ${randomTranslateY}px)`;
+            video.style.filter = `hue-rotate(${randomHue}deg) brightness(${randomBrightness})`;
+          }, 100); // Update every 100ms
+
+          // Stop the effect after 5 seconds
+          setTimeout(() => clearInterval(discoInterval), 5000);
+        }
+
+        // Listen for the video ending
+        video.addEventListener("ended", discoEffect);
+      </script>
+
+      <style>
+        video {
+          display: block;
+          margin: 0 auto;
+          transition: transform 0.1s ease;
+        }
+      </style>
+
+      <!-- <iframe style="border: 1px solid rgba(0, 0, 0, 0.1); width: 100vw; height: 100vh; z-index: 2;"  src="https://embed.figma.com/proto/kG9L7ORZDgDoFn5jvx3h7g/super-secret?page-id=100%3A2&node-id=103-3900&p=f&viewport=36%2C346%2C0.02&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=101%3A69&embed-host=share"></iframe> -->
+    </div>
+    <div class="text">This is how my heart lights up for you!</div>
+    <script src="scripts.js"></script>
+  </body>
+</html>
